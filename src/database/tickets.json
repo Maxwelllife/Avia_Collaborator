@@ -1,0 +1,163 @@
+[
+  {
+    "id": "1",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 2055,
+    "durationFrom": 990,
+    "price": 13300,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "HKG"
+    ],
+    "connectionFrom": [
+      "HKG"
+    ]
+  },
+  {
+    "id": "2",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 1035,
+    "durationFrom": 2430,
+    "price": 15100,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "HKG",
+      "JNB"
+    ],
+    "connectionFrom": [
+      "HKG", "JNB"
+    ]
+  },
+  {
+    "id": "3",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 1215,
+    "durationFrom": 810,
+    "price": 15400,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "HKG"
+    ],
+    "connectionFrom": [
+      "HKG"
+    ]
+  },
+  {
+    "id": "4",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 1275,
+    "durationFrom": 750,
+    "price": 21400,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "HKG", "JNB", "JNB"
+    ],
+    "connectionFrom": [
+      "HKG", "JNB", "JNB"
+    ]
+  },
+  {
+    "id": "5",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 675,
+    "durationFrom": 570,
+    "price": 23900,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "Без пересадок"
+    ],
+    "connectionFrom": [
+      "Без пересадок"
+    ]
+  },
+  {
+    "id": "6",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 2055,
+    "durationFrom": 990,
+    "price": 23999,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "HKG"
+    ],
+    "connectionFrom": [
+      "HKG"
+    ]
+  },
+  {
+    "id": "7",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 2055,
+    "durationFrom": 990,
+    "price": 24000,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "HKG"
+    ],
+    "connectionFrom": [
+      "HKG"
+    ]
+  },
+  {
+    "id": "8",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 2055,
+    "durationFrom": 990,
+    "price": 24500,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "HKG","HKG","HKG","HKG","HKG","HKG"
+    ],
+    "connectionFrom": [
+      "HKG"
+    ]
+  },
+  {
+    "id": "9",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 2055,
+    "durationFrom": 990,
+    "price": 25000,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "HKG"
+    ],
+    "connectionFrom": [
+      "HKG"
+    ]
+  },
+  {
+    "id": "10",
+    "departure": "LHR",
+    "arrival": "DXB",
+    "durationTo": 2055,
+    "durationFrom": 990,
+    "price": 26000,
+    "scheduleTo": "10:45 – 08:00",
+    "scheduleFrom": "11:20 – 00:50",
+    "connectionTo": [
+      "HKG"
+    ],
+    "connectionFrom": [
+      "HKG"
+    ]
+  }
+]
