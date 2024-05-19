@@ -1,0 +1,35 @@
+import {FC, useState} from "react";
+import s from "./Filter.module.scss";
+
+import Icon from "../Icon/Icon";
+
+
+const filterList = ["Всі", "Без пересадок", "1 пересадка", "2 пересадки", "3 пересадки"]
+const Filter: FC = () => {
+    const [checkList, setCheckList] = useState(Array(filterList.length).fill(false));
+
+    const setCheck = (i: number) => {
+        setCheckList(prev => {
+            const result = [...prev];
+            result[i] = !result[i];
+            return result;
+        })
+    }
+    return (
+        <div className={s.filter}>
+            <p  className={s.filter__title}>кількість пересадок</p>
+            <ul className={s.filter__list}>
+                {filterList.map((filter, i) => (
+                    <li key={filter} className={s.filter__item}>
+                        <label className={s.filter__label}>
+                            <input className={s.filter__checkbox} checked={checkList[i]} type="checkbox"
+                                   onChange={() => setCheck(i)}/>
+                            <Icon cn={s.filter__icon} icon="check" w={12} h={8}/>
+                        </label>
+                        {filter}
+                    </li>
+                ))}
+            </ul>
+        </div>)
+}
+export default Filter;

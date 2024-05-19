@@ -1,13 +1,13 @@
 import {FC} from "react";
 import {ITextBox} from "types";
-import s from "./TicketsList.module.scss";
+import s from "./TicketCard.module.scss";
 
 
 const TextBox: FC<ITextBox> = ({title, text}) => {
     return (
         <div>
-            <p className={s.a}>{title}</p>
-            <p>{text}</p>
+            <p className={s.title}>{title}</p>
+            <p className={s.text}>{text}</p>
         </div>
     );
 }

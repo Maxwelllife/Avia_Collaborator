@@ -1,8 +1,8 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-// import infoReducer from './info/info-slice';
+import ticketsSlice from "./TicketsSclice";
 
 const rootReducer = combineReducers({
-    // info: persistedInfo,
+    tickets: ticketsSlice,
 });
 
 export const store = configureStore({

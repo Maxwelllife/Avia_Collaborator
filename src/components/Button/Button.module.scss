@@ -1,0 +1,24 @@
+@import "../../sass/variables";
+.btn {
+  width: 100%;
+  padding: 15px 20px;
+  color: $background-color;
+  background-color: $brand-color;
+  border-radius: 5px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    background-color:  lighten(#095da6, 10%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+.disabledBtn {
+  background-color: #9ABBCE;
+  cursor: initial;
+  &:hover {
+    background-color:  #9ABBCE;
+    box-shadow: none;
+  }
+}

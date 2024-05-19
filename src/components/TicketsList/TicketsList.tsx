@@ -1,66 +1,62 @@
-import {FC} from "react";
+import {FC, useEffect, useState} from "react";
+import {TicketCard, Button, Sorter, Filter} from "components";
+import {useAppSelector, useAppDispatch} from "../../redux/hook";
 import ticketsList from "database/tickets.json"
-import logo from "assets/a4e_logo.png"
-import TextBox from "./TextBox";
+import s from "./TicketsList.module.scss";
+import main_logo from "assets/Logo.png";
 
 const TicketsList:FC = () => {
-    console.log('lastNumber');
-    const getFormatTime = (minutes:number):string => {
-        const hours = Math.floor(minutes/60);
-        const restMinutes = minutes%60;
-        return `${hours}г ${restMinutes}хв`;
-    }
-    const getConnectionCount = (connections:string[]):string => {
-        const count = connections.length;
-        console.log('count', count)
-        let ending = "пересадок";
-        if (!count) {
-            return "без пересадок"
+    const[count, setCount] = useState(5);
+    const[list,setList] = useState(ticketsList);
+    const sortBy = useAppSelector(state=> state.tickets.sortBy);
+    const dispatch = useAppDispatch();
+
+    const sorted = () => {
+
+        const result = [...list];
+        if (sortBy === "Найдешевший") {
+            setList(result.sort((a,b)=> a.price-b.price))
+        } else if (sortBy === "Найшвидший") {
+            setList(result.sort((a,b)=> a.durationTo + a.durationFrom - b.durationTo - b.durationFrom));
         } else {
-
-            if (count < 10 || count > 20) {
-                const lastNumber = count%10;
-
-                if (lastNumber === 1) {
-                    ending = "пересадкa"
-                } else if (lastNumber > 1 && lastNumber < 5) {
-                    ending = "пересадки"
-                }
-                console.log('lastNumber',lastNumber);
-                console.log('ending',ending);
-            }
+            setList(result.sort((a,b)=> {
+                    if ( a.durationTo + a.durationFrom - b.durationTo - b.durationFrom === 0) {
+                        if (a.connectionTo.length + a.connectionFrom.length - b.connectionTo.length - b.connectionFrom.length === 0) {
+                            return a.price - b.price;
+                        }
+                        return a.connectionTo.length + a.connectionFrom.length - b.connectionTo.length - b.connectionFrom.length;
+                    }
+                    return a.durationTo + a.durationFrom - b.durationTo - b.durationFrom;
+                })
+            )
         }
-        return `${count} ${ending}`;
     }
-    return <div>
-        <ul>
-            {ticketsList.map(({id,
-                                  price,
-                                  departure,
-                                  arrival,
-                                  durationTo,
-                                  durationFrom,
-                                  scheduleTo,
-                                  scheduleFrom,
-                                  connectionTo,
-                                  connectionFrom,
-                              })=>
-                <li key={id}>
-                    <div>
-                        <p>{price} $</p>
-                        <img src={logo} alt="logo company"/>
-                    </div>
-                    <div>
-                        <TextBox title={`${departure}-${arrival}`} text={scheduleTo}/>
-                        <TextBox title={`${arrival}-${departure}`} text={scheduleFrom}/>
-                        <TextBox title="в дорозі" text={getFormatTime(durationTo)}/>
-                        <TextBox title="в дорозі" text={getFormatTime(durationFrom)}/>
-                        <TextBox title={getConnectionCount(connectionTo)} text={scheduleTo}/>
-                        <TextBox title={getConnectionCount(connectionFrom)} text={scheduleTo}/>
-                    </div>
-                </li>
-            )}
-        </ul>
-    </div>
+
+    useEffect(()=> {
+        sorted();
+    }, [sortBy]);
+
+    const showMoreItems = ()=> {
+        setCount(prev => prev + 5);
+        sorted();
+    }
+    const isAllItemsShown = count >= list.length;
+
+    return (
+        <div className={s.container}>
+            <a href="#">
+                <img src={main_logo} width="82" alt="main logo company"/>
+            </a>
+            <div className={s.container__inner_wrap}>
+            <Filter/>
+                <div className={s.container__list}>
+                    <Sorter/>
+                    <ul className={s.card__list}>
+                        {list.slice(0, count).map((ticket) => <TicketCard key={ticket.id} ticket={ticket}/>)}
+                    </ul>
+                    <Button text="Показати ще 5 квитків" click={showMoreItems}  disabled={isAllItemsShown}/>
+                </div>
+            </div>
+        </div>)
 }
 export default TicketsList;

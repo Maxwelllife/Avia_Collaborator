@@ -21,7 +21,7 @@
     "arrival": "DXB",
     "durationTo": 1035,
     "durationFrom": 2430,
-    "price": 15100,
+    "price": 150100,
     "scheduleTo": "10:45 – 08:00",
     "scheduleFrom": "11:20 – 00:50",
     "connectionTo": [
@@ -73,12 +73,8 @@
     "price": 23900,
     "scheduleTo": "10:45 – 08:00",
     "scheduleFrom": "11:20 – 00:50",
-    "connectionTo": [
-      "Без пересадок"
-    ],
-    "connectionFrom": [
-      "Без пересадок"
-    ]
+    "connectionTo": [],
+    "connectionFrom": []
   },
   {
     "id": "6",
