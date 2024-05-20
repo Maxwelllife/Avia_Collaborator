@@ -56,7 +56,7 @@ const TicketsList: FC = () => {
 
     return (
         <div className={s.container}>
-            <a href="#" className={s.logo_link} aria-label="logo company">
+            <a href="/" className={s.logo_link} aria-label="logo company">
                 <Icon cn={s.logo_icon} icon="main_logo" w={82}/>
             </a>
             <div className={s.container__inner_wrap}>

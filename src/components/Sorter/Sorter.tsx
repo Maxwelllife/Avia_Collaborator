@@ -10,7 +10,7 @@ const Sorter: FC = () => {
 
     useEffect(()=> {
         dispatch(setSortBy(buttonList[0]));
-    }, [])
+    }, [dispatch])
     const sortBy = (index:number):void => {
         dispatch(setSortBy(buttonList[index]))
         setActiveBtn(buttonList[index]);
