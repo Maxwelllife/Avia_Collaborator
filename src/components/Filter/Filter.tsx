@@ -1,23 +1,30 @@
-import {FC, useState} from "react";
+import {FC} from "react";
 import s from "./Filter.module.scss";
-
+import {useAppDispatch, useAppSelector} from "../../redux/hook";
 import Icon from "../Icon/Icon";
+import {setCheckList} from "../../redux/TicketsSclice";
 
 
-const filterList = ["Всі", "Без пересадок", "1 пересадка", "2 пересадки", "3 пересадки"]
+const filterList = ["Всі", "Без пересадок", "1 пересадка", "2 пересадки", "3 пересадки"];
+
+
 const Filter: FC = () => {
-    const [checkList, setCheckList] = useState(Array(filterList.length).fill(false));
+    const checkList = useAppSelector(state => state.tickets.checkList);
+    const dispatch = useAppDispatch();
 
-    const setCheck = (i: number) => {
-        setCheckList(prev => {
-            const result = [...prev];
-            result[i] = !result[i];
-            return result;
-        })
+    if (checkList.length === 0) {
+        dispatch(setCheckList(Array(filterList.length).fill(false)));
     }
+    const setCheck = (i: number) => {
+        const result = [...checkList];
+        result[i] = !result[i];
+        dispatch(setCheckList(result));
+    }
+
+
     return (
         <div className={s.filter}>
-            <p  className={s.filter__title}>кількість пересадок</p>
+            <p className={s.filter__title}>кількість пересадок</p>
             <ul className={s.filter__list}>
                 {filterList.map((filter, i) => (
                     <li key={filter} className={s.filter__item}>

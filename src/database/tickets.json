@@ -118,10 +118,10 @@
     "scheduleTo": "10:45 – 08:00",
     "scheduleFrom": "11:20 – 00:50",
     "connectionTo": [
-      "HKG","HKG","HKG","HKG","HKG","HKG"
+      "HKG","HKG","HKG"
     ],
     "connectionFrom": [
-      "HKG"
+      "HKG","HKG","HKG"
     ]
   },
   {

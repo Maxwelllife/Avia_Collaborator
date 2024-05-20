@@ -1,10 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
-// import ticketsList from "database/tickets.json"
 
-const initialState = {
-    // list: ticketsList.slice(0,5),
+const initialState :{sortBy: string, checkList: boolean[]} = {
     sortBy: "",
-    filter: "",
+    checkList: [],
 }
 const ticketsSlice = createSlice({
     name: "tickets",
@@ -12,10 +10,13 @@ const ticketsSlice = createSlice({
 
     reducers: {
         setSortBy:(state, {payload}) => {
-            state.sortBy = payload
+            state.sortBy = payload;
+        },
+        setCheckList:(state, {payload}) => {
+            state.checkList = payload;
         },
     }
 })
 
-export const {setSortBy} = ticketsSlice.actions;
+export const {setSortBy,setCheckList} = ticketsSlice.actions;
 export default ticketsSlice.reducer;
