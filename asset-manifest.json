@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Avia_Collaborator/static/css/main.2a0e7361.css",
+    "main.js": "/Avia_Collaborator/static/js/main.0e0f24e4.js",
+    "static/media/icons.svg": "/Avia_Collaborator/static/media/icons.ff8480f75a3958945cc287061419e3b2.svg",
+    "index.html": "/Avia_Collaborator/index.html",
+    "main.2a0e7361.css.map": "/Avia_Collaborator/static/css/main.2a0e7361.css.map",
+    "main.0e0f24e4.js.map": "/Avia_Collaborator/static/js/main.0e0f24e4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2a0e7361.css",
+    "static/js/main.0e0f24e4.js"
+  ]
+}
