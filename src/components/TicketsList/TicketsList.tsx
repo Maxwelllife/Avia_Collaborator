@@ -1,24 +1,23 @@
-import {FC, useEffect, useState, useCallback } from "react";
-import {TicketCard, Button, Sorter, Filter} from "components";
+import {FC, useState } from "react";
+import {TicketCard, Button, Sorter, Filter, Icon} from "components";
 import {useAppSelector} from "../../redux/hook";
 import ticketsList from "database/tickets.json"
 import s from "./TicketsList.module.scss";
-import main_logo from "assets/Logo.png";
+import {ITick} from "../../types";
 
 const TicketsList: FC = () => {
     const [count, setCount] = useState(5);
-    const [list, setList] = useState(ticketsList);
+
     const {sortBy, checkList} = useAppSelector(state => state.tickets);
 
-    const sorted = useCallback(() => {
+    const sorted = (array: ITick[] = ticketsList):ITick[] => {
 
-        const result = [...ticketsList];
         if (sortBy === "Найдешевший") {
-            setList(result.sort((a, b) => a.price - b.price))
+            return array.sort((a, b) => a.price - b.price)
         } else if (sortBy === "Найшвидший") {
-            setList(result.sort((a, b) => a.durationTo + a.durationFrom - b.durationTo - b.durationFrom));
+            return array.sort((a, b) => a.durationTo + a.durationFrom - b.durationTo - b.durationFrom);
         } else {
-            setList(result.sort((a, b) => {
+            return array.sort((a, b) => {
                     if (a.durationTo + a.durationFrom - b.durationTo - b.durationFrom === 0) {
                         if (a.connectionTo.length + a.connectionFrom.length - b.connectionTo.length - b.connectionFrom.length === 0) {
                             return a.price - b.price;
@@ -26,14 +25,13 @@ const TicketsList: FC = () => {
                         return a.connectionTo.length + a.connectionFrom.length - b.connectionTo.length - b.connectionFrom.length;
                     }
                     return a.durationTo + a.durationFrom - b.durationTo - b.durationFrom;
-                })
+                }
             )
         }
-    }, [sortBy]);
-
-    const filtered = useCallback(() => {
+    };
+    const filtered = ():ITick[] => {
         if (checkList[0] || checkList.every((check) => check===false )) {
-            setList(ticketsList);
+          return ticketsList;
         } else {
             const ticketsZero = ticketsList.filter(({connectionTo}) => connectionTo.length === 0);
             const ticketsOne = ticketsList.filter(({connectionTo}) => connectionTo.length === 1);
@@ -45,19 +43,11 @@ const TicketsList: FC = () => {
             for (let i = 1; i < checkList.length; i++) {
                 if (checkList[i]) result.push(...subList[i-1]);
             }
-
-            setList(result);
+            return result;
         }
+    };
 
-    }, [checkList]);
-
-    useEffect(() => {
-        sorted();
-    }, [sorted]);
-
-    useEffect(() => {
-        filtered();
-    }, [filtered]);
+    const list = sorted(filtered());
 
     const showMoreItems = () => {
         setCount(prev => prev + 5);
@@ -66,8 +56,8 @@ const TicketsList: FC = () => {
 
     return (
         <div className={s.container}>
-            <a href="#">
-                <img src={main_logo} width="82" alt="main logo company"/>
+            <a href="#" className={s.logo_link} aria-label="logo company">
+                <Icon cn={s.logo_icon} icon="main_logo" w={82}/>
             </a>
             <div className={s.container__inner_wrap}>
                 <Filter/>
@@ -76,7 +66,7 @@ const TicketsList: FC = () => {
                     <ul className={s.card__list}>
                         {list.slice(0, count).map((ticket) => <TicketCard key={ticket.id} ticket={ticket}/>)}
                     </ul>
-                    <Button text="Показати ще 5 квитків" click={showMoreItems} disabled={isAllItemsShown}/>
+                    <Button text={isAllItemsShown? "Показані всі квитки" : "Показати ще 5 квитків"} click={showMoreItems} disabled={isAllItemsShown} />
                 </div>
             </div>
         </div>)

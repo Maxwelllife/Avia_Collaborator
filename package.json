@@ -2,6 +2,7 @@
   "name": "avia_collaborator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://maxwelllife.github.io/Avia_Collaborator/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "@testing-library/jest-dom": "^5.17.0",

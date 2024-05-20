@@ -8,7 +8,7 @@ const Button:FC<IButton> = ({text, cn, click, disabled})=> {
         onClick={click}
         type="button"
     >
-        {disabled ? "а це все" : text}
+        {text}
     </button>
 }
 export default Button;
